@@ -18,7 +18,7 @@ train each one hands it.
 Hardware configuration names:  `leftTread`, `rightTread`, `cascadeMotor`,
 `topLiftLimit`, `bottomLiftLimit`, `claw`.
 
-The code lives in `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/`.
+The code is in `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/`.
 Open the project folder in Android Studio and deploy to a robot the usual way.
 
 ## License
