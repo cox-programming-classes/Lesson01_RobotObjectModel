@@ -6,29 +6,38 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.RobotModel.DriveTrain.DriveTrain;
 import org.firstinspires.ftc.teamcode.RobotModel.Mechs.Assemblies.MechAssembly;
 
+import java.util.Objects;
+
 /**
  * Abstract base for all robots in the system.
+ *
+ * <p>A robot has exactly one drive train, and may or may not have a mech assembly.
  *
  * @author Susan Zuo (telemetry refactor)
  */
 public abstract class Robot
 {
-    protected DriveTrain driveTrain;
+    protected final DriveTrain driveTrain;
     protected MechAssembly mechAssembly;
     protected Telemetry telemetry;
 
-    protected Robot(Telemetry telemetry)
+    /**
+     * @param telemetry pass down from OpMode.
+     * @param driveTrain this robot's one drive train.  It may not be null.
+     */
+    protected Robot(Telemetry telemetry, DriveTrain driveTrain)
     {
         this.telemetry = telemetry;
+        this.driveTrain = Objects.requireNonNull(driveTrain, "A Robot must have a DriveTrain.");
     }
 
     /**
      * Hands telemetry down to the drive train and the mech assembly.
-     * Call this at the end of a subclass constructor, once both are assigned.
+     * Call this at the end of a subclass constructor, once the mech assembly is assigned.
      */
     protected void initializeSubsystems()
     {
-        if (driveTrain != null) driveTrain.initializeTelemetry(telemetry);
+        driveTrain.initializeTelemetry(telemetry);
         if (mechAssembly != null) mechAssembly.initializeTelemetry(telemetry);
     }
 
@@ -37,7 +46,7 @@ public abstract class Robot
      * This is the only place that calls {@code telemetry.update()}.
      */
     public void updateTelemetry() {
-        if (driveTrain != null) driveTrain.updateTelemetry();
+        driveTrain.updateTelemetry();
         if (mechAssembly != null) mechAssembly.updateTelemetry();
         telemetry.update();
     }
@@ -49,7 +58,7 @@ public abstract class Robot
      */
     public void update(Gamepad gamepad1, Gamepad gamepad2)
     {
-        if (driveTrain != null) driveTrain.drive(gamepad1);
+        driveTrain.drive(gamepad1);
         if (mechAssembly != null) mechAssembly.giveInstructions(gamepad2);
     }
 }

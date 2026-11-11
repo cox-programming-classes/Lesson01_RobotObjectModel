@@ -15,8 +15,7 @@ public class BaseBot extends Robot
      */
     public BaseBot(HardwareMap hardwareMap, Telemetry telemetry, DriveTrain driveTrain)
     {
-        super(telemetry);
-        this.driveTrain = driveTrain;
+        super(telemetry, driveTrain);
         mechAssembly = new Arm(hardwareMap);
         initializeSubsystems();
     }
