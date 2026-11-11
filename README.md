@@ -20,3 +20,12 @@ Hardware configuration names:  `leftTread`, `rightTread`, `cascadeMotor`,
 
 The code lives in `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/`.
 Open the project folder in Android Studio and deploy to a robot the usual way.
+
+## License
+
+The course materials here are licensed under [Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0
+International](https://creativecommons.org/licenses/by-nc-sa/4.0/) (CC BY-NC-SA
+4.0).  The full text is in [`LICENSE`](LICENSE).  The FTC SDK
+(`FtcRobotController/`, the Gradle build, and `libs/`) keeps its license from
+*FIRST*, in [`LICENSE-FIRST`](LICENSE-FIRST).
